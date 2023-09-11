@@ -1,8 +1,8 @@
-@import 'vars';
-@import 'fonts';
-@import 'reset';
-@import 'libs';
-@import 'global';
+@import "vars";
+@import "fonts";
+@import "reset";
+@import "libs";
+@import "global";
 
 // header start *****************************************************************************
 .header {
@@ -129,7 +129,7 @@
     padding-left: 40px;
     position: relative;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 0;
@@ -198,7 +198,7 @@
     border-radius: 4px;
     position: relative;
     &.checked::before {
-      content: '';
+      content: "";
       position: absolute;
       background-image: url(../images/Check-white.png);
       width: 12px;
@@ -354,7 +354,7 @@
       position: relative;
       &::before {
         position: absolute;
-        content: '';
+        content: "";
         background-image: url(../images/adults.svg);
         width: 20px;
         height: 20px;
@@ -370,7 +370,7 @@
         display: block;
         &::before {
           position: absolute;
-          content: '|';
+          content: "|";
           left: 8px;
           top: -1px;
         }
@@ -424,7 +424,7 @@
         cursor: pointer;
         &::before {
           position: absolute;
-          content: '';
+          content: "";
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
@@ -459,7 +459,7 @@
 .choices__list[aria-expanded] .choices__item--selectable::after {
   display: none;
 }
-.choices[data-type*='select-one'] .choices__inner,
+.choices[data-type*="select-one"] .choices__inner,
 .choices__list--dropdown {
   padding: 6px 16px;
   font-size: 18px;
@@ -595,6 +595,7 @@
     margin: 0 auto;
     margin-bottom: 160px;
     padding: 40px;
+    padding-top: 48px;
     background-color: $primary;
     text-align: center;
     border-radius: 8px;
@@ -639,7 +640,7 @@
         &::after,
         &::before {
           position: absolute;
-          content: '';
+          content: "";
           height: 2px;
           width: 40px;
           background-color: #81848d;
@@ -855,7 +856,7 @@
       position: relative;
       svg {
         position: absolute;
-        content: '';
+        content: "";
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -917,7 +918,7 @@
     padding: 0 40px;
   }
   .header {
-    overflow: hidden;
+    // overflow: hidden;
     &__inner {
       position: relative;
       .menu__list {
@@ -933,6 +934,7 @@
 
     .social {
       display: block;
+      margin-bottom: 64px;
     }
     &__menu-mobile {
       text-align: center;
@@ -948,7 +950,7 @@
       border-radius: 0px 0px 0px 8px;
       box-shadow: 0px 0px 40px 0px rgba(46, 52, 66, 0.12);
       &.active__menu {
-        transform: translateX(5%);
+        transform: translateX(11%);
       }
     }
     .menu-btn {
@@ -956,7 +958,7 @@
       height: 32px;
       position: relative;
       z-index: 10;
-      overflow: hidden;
+      // overflow: hidden;
       margin-left: 32px;
     }
 
@@ -989,9 +991,24 @@
       transform: translate(-50%, 0%) rotate(-45deg);
     }
   }
+  .top {
+    padding-top: 80px;
+    padding-bottom: 96px;
+    &__title {
+      margin-bottom: 48px;
+    }
+  }
   .routes {
+    &__inner {
+      margin-top: 80px;
+      margin-bottom: 96px;
+    }
     &__items {
       grid-gap: 0;
+      margin-bottom: 0;
+    }
+    &__title {
+      margin-bottom: 40px;
     }
     &__item {
       max-width: 332px;
@@ -1004,13 +1021,32 @@
     }
   }
   .popular {
+    &__inner {
+      margin-bottom: 120px;
+    }
     &__item {
       max-width: 688px;
       margin: 0 auto;
       margin-bottom: 16px;
     }
   }
+  .today {
+    &__inner {
+      margin-bottom: 120px;
+    }
+  }
+  .about {
+    &__inner {
+      margin-bottom: 120px;
+    }
+  }
   .advantages {
+    &__title {
+      margin-bottom: 40px;
+    }
+    &__inner {
+      margin-bottom: 120px;
+    }
     &__items {
       flex-wrap: wrap;
       justify-content: space-around;
@@ -1028,6 +1064,10 @@
     &__inner {
       display: block;
       text-align: center;
+      margin-bottom: 120px;
+    }
+    &__text-title {
+      margin-bottom: 40px;
     }
     &__text,
     .trust__counter {
@@ -1035,6 +1075,18 @@
     }
     &__text {
       margin-bottom: 32px;
+    }
+  }
+  .reviews {
+    margin-bottom: 80px;
+    &__title {
+      margin-bottom: 0;
+    }
+  }
+  .info {
+    &__inner,
+    .info__items {
+      margin-bottom: 114px;
     }
   }
   .footer {
@@ -1059,4 +1111,66 @@
   }
 }
 
+@media (max-width: 360px) {
+  .container {
+    padding: 0 20px;
+  }
+  .header {
+    &__box {
+      margin-top: 6px;
+    }
+    .menu-btn {
+      margin-left: 16px;
+    }
+    .personal {
+      padding-left: 8px;
+    }
+    .select-menu {
+      margin-top: 8px;
+    }
+  }
+  .top {
+    padding-top: 64px;
+    &__title {
+      font-size: 33px;
+      margin-bottom: 32px;
+      h4 {
+        font-size: 18px;
+      }
+      h1 {
+        font-size: 33px;
+      }
+    }
+    .order {
+      padding: 32px 24px;
+      &__chekbox {
+        font-size: 14px;
+      }
+    }
+    .order__form-box--top {
+      flex-wrap: wrap;
+      justify-content: end;
+      position: relative;
+    }
+    .top-select-change {
+      margin-top: 32px;
+      position: absolute;
+    }
+    .choices {
+      margin: 0;
+    }
+    .select-to {
+      margin-top: 12px;
+    }
+    .order__form-box {
+      margin-top: 24px;
+    }
+    .order__form-box--bottom {
+      flex-wrap: wrap;
+    }
+    .passengers__label {
+      padding-top: 8px;
+    }
+  }
+}
 // /***/

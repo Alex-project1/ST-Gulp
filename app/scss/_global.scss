@@ -1,0 +1,94 @@
+// @import 'vars';
+// @import 'fonts';
+// @import 'reset';
+// @import 'libs';
+// @import 'global';
+html,
+body {
+  height: 100%;
+}
+body {
+  @extend %roboto-400;
+
+  color: $black;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
+}
+
+.container {
+  max-width: 1230px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.navigation {
+  @extend %roboto-700;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+h1 {
+  @extend %roboto-700;
+  font-size: 40px;
+  line-height: 1.2;
+}
+h2 {
+  @extend %roboto-700;
+  font-size: 33px;
+  line-height: 1.2;
+}
+h3 {
+  @extend %roboto-500;
+  font-size: 28px;
+  line-height: 1.28;
+}
+h4 {
+  @extend %roboto-500;
+  font-size: 32px;
+  line-height: 1.2;
+
+  color: var(--Black, #1a1b1e);
+
+  /* H4 */
+  @extend %roboto-500;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4;
+}
+h5 {
+  @extend %roboto-500;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+//****** hover
+.btn-accent {
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background: var(--accent-accent-40, #f3c365);
+    box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+  }
+}
+
+//****** hover

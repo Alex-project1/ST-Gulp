@@ -1,0 +1,30 @@
+// образец переменных*****************
+
+// $default: #5a5a5a;
+// $title: #363838;
+
+// %title-font {
+//   font-family: 'Montserrat', sans-serif;
+//   font-weight: 700;
+// }
+
+// **************************************
+%roboto-400 {
+  font-family: 'Roboto-Regular';
+  font-weight: 400;
+}
+%roboto-500 {
+  font-family: 'Roboto-Medium';
+  font-weight: 500;
+}
+%roboto-700 {
+  font-family: 'Roboto-Bold';
+  font-weight: 700;
+}
+
+//***************************************
+$primary: #2e3442;
+$white: #fdfdfd;
+$bg: #fafafa;
+$black: #1a1b1e;
+$accent: #f0b43f;

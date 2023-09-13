@@ -13,6 +13,8 @@ $(function () {
   overlay.addEventListener('click', () => {
     overlay.classList.remove('active');
     optionMenu.classList.remove('active');
+    menuBtn.classList.remove('active');
+    mobileMenu.classList.remove('active__menu');
   });
   options.forEach((option) => {
     option.addEventListener('click', () => {
@@ -81,6 +83,7 @@ $(function () {
 
   /**************swiper */
   const swiper = new Swiper('.mySwiper', {
+    loop: true,
     slidesPerView: 3,
     spaceBetween: 30,
     navigation: {
@@ -130,6 +133,7 @@ $(function () {
   //**minors */
   minorPlus.addEventListener('click', () => {
     counterMinors++;
+    minorMinus.classList.remove('dis');
 
     if (counterMinors == 1) {
       passMinorsText.innerHTML = 'Дитячий';
@@ -145,6 +149,7 @@ $(function () {
     if (counterMinors <= 0) {
       counterMinors = 0;
       minorsBlock.classList.remove('active');
+      minorMinus.classList.add('dis');
     } else if (counterMinors == 1) {
       passMinorsText.innerHTML = 'Дитячий';
     } else if (counterMinors >= 2) {
@@ -156,6 +161,7 @@ $(function () {
   //**adult */
   adultPlus.addEventListener('click', () => {
     counterAdults++;
+    adultMinus.classList.remove('dis');
     if (counterAdults == 1) {
       passAdultsText.innerHTML = 'Дорослий';
     } else if (counterAdults >= 2) {
@@ -166,11 +172,10 @@ $(function () {
   });
   adultMinus.addEventListener('click', () => {
     counterAdults--;
-    if (counterAdults <= 0) {
-      counterAdults = 0;
-      passAdultsText.innerHTML = 'Дорослиx';
-    } else if (counterAdults == 1) {
+    if (counterAdults <= 1) {
+      counterAdults = 1;
       passAdultsText.innerHTML = 'Дорослий';
+      adultMinus.classList.add('dis');
     } else if (counterAdults >= 2) {
       passAdultsText.innerHTML = 'Дорослиx';
     }
@@ -203,8 +208,18 @@ $(function () {
       infoText.forEach((text) => {
         text.classList.remove('active-text');
       });
-      btn.classList.toggle('active-btn');
-      btn.nextElementSibling.classList.toggle('active-text');
+      if (btn.classList.contains('test')) {
+        btn.classList.remove('active-btn');
+        btn.classList.remove('test');
+        btn.nextElementSibling.classList.remove('active-text');
+      } else {
+        infoBtn.forEach((btn) => {
+          btn.classList.remove('test');
+        });
+        btn.classList.add('active-btn');
+        btn.classList.add('test');
+        btn.nextElementSibling.classList.add('active-text');
+      }
     });
   });
   //**info section *************************************************************************/
@@ -214,6 +229,46 @@ $(function () {
   menuBtn.addEventListener('click', () => {
     menuBtn.classList.toggle('active');
     mobileMenu.classList.toggle('active__menu');
+    overlay.classList.toggle('active');
   });
   /**mobile menu ***************************************************** */
+
+  // Log in start
+  const modalWindow = document.querySelector('.modal-window');
+  const overlayLog = document.querySelector('.overlay-log');
+  const btnCloseModalWindow = document.querySelector('.close-modal-window');
+  const btnShowModalWindow = document.querySelector('.show-modal-window');
+
+  const closeModalWindow = function () {
+    modalWindow.classList.add('hidden');
+    overlayLog.classList.add('hidden');
+  };
+  const showModalWindow = function () {
+    modalWindow.classList.remove('hidden');
+    overlayLog.classList.remove('hidden');
+  };
+
+  btnShowModalWindow.addEventListener('click', showModalWindow);
+  btnCloseModalWindow.addEventListener('click', closeModalWindow);
+  overlayLog.addEventListener('click', closeModalWindow);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modalWindow.classList.contains('hidden')) {
+      closeModalWindow();
+    }
+  });
+
+  // Log in end
+  // check
+  const checkPrimBtns = document.querySelectorAll('.checkbox-primary');
+  checkPrimBtns.forEach((btnPrim) => {
+    btnPrim.addEventListener('click', () => {
+      const checkedPrimary = btnPrim.querySelector('.checkbox-primary__item');
+      checkedPrimary.classList.toggle('checked');
+    });
+  });
+  // check
+  //
+
+  //
 });

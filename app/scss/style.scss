@@ -6,6 +6,7 @@
 
 // header start *****************************************************************************
 .header {
+  position: relative;
   &__inner {
     padding: 20px 0;
     display: flex;
@@ -42,6 +43,7 @@
 // select language start
 .select-menu {
   position: relative;
+  z-index: 3;
 }
 .select-btn {
   display: flex;
@@ -95,7 +97,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 200%;
+  height: 170%;
   background-color: transparent;
   z-index: 1;
   display: none;
@@ -121,7 +123,7 @@
   border-radius: 8px;
   padding: 32px 32px 0 32px;
   position: absolute;
-  top: 50%;
+  top: 390px;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
@@ -212,6 +214,9 @@
     margin-top: 26px;
   }
 }
+.new-pass {
+  max-width: 480px;
+}
 /* Classes for modal windows functionality */
 .hidden {
   display: none;
@@ -278,6 +283,7 @@
     &__input {
       outline: none;
       width: 277px;
+
       padding: 9px 16px;
       border-radius: 8px 0px 0px 8px;
       border: 1px solid var(--primary-primary-20, #aaadb2);
@@ -320,23 +326,7 @@
   &__allright {
     margin-bottom: 60px;
   }
-  &__checkbox {
-    margin-right: 8px;
-    width: 16px;
-    height: 16px;
-    border: 1px solid $white;
-    border-radius: 4px;
-    position: relative;
-    &.checked::before {
-      content: "";
-      position: absolute;
-      background-image: url(../images/Check-white.png);
-      width: 12px;
-      height: 12px;
-      left: 1px;
-      top: 1px;
-    }
-  }
+
   &__box {
     display: flex;
     justify-content: space-between;
@@ -344,12 +334,9 @@
       margin-right: 120px;
     }
   }
-}
-.footer__label-checkbox {
-  align-items: center;
-  display: flex;
-  margin-top: 12px;
-  cursor: pointer;
+  &__checkbox-inner {
+    margin-top: 12px;
+  }
 }
 
 // footer end *****************************************************************************
@@ -622,7 +609,7 @@
   display: none;
 }
 #datepicker {
-  padding: 12px 9px;
+  padding: 12px 20px;
   max-width: 296px;
   width: 100%;
   border: 1px solid #ddd;
@@ -831,13 +818,13 @@
       margin-top: 48px;
       display: block;
     }
-    img {
-      max-width: 50%;
-    }
   }
   &__text {
-    width: 481px;
+    max-width: 481px;
+    width: 100%;
     margin-right: 24px;
+  }
+  picture {
   }
 }
 //section about end *****************************************************
@@ -922,6 +909,7 @@
   text-align: center;
   padding-top: 80px;
   padding-bottom: 120px;
+  position: relative;
   &__inner {
     padding-top: 80px;
     padding-bottom: 120px;
@@ -944,6 +932,7 @@
   &__item {
     max-width: 378px;
     width: 100%;
+    min-height: 158px;
     padding: 60px 24px 24px 24px;
     background-color: $white;
     position: relative;
@@ -965,6 +954,21 @@
   }
   &__swiper {
     position: relative;
+  }
+
+  .new-reviews {
+    &__modal {
+      max-width: 480px;
+      top: 50%;
+    }
+    &__btn {
+      width: 100%;
+      margin-top: 0;
+    }
+    &__succes-btn {
+      width: 100%;
+      margin-top: 0;
+    }
   }
 }
 .swiper-slide {
@@ -1047,9 +1051,13 @@
       grid-template-rows: 0fr;
       transition: all 0.3s;
       padding: 0;
+
       &.active-text {
         grid-template-rows: 1fr;
         padding: 24px 16px;
+        border-radius: 0px 0px 8px 8px;
+        border: 2px solid $primary;
+        border-top: none;
       }
       & > div {
         overflow: hidden;
@@ -1102,8 +1110,463 @@
   }
 }
 // trips page start *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+//section  buytuckets strat
+.buytuckets {
+  background-color: #fafafa;
+  margin-top: 80px;
+  .baggage,
+  .buyer-info,
+  .passenger-info {
+    border-radius: 8px;
+    border: 2px solid $primary;
+    padding: 24px 32px;
+    margin-top: 40px;
+  }
+  .trip {
+    float: right;
+    &__price {
+      display: flex;
+      justify-content: space-between;
+    }
+    .trips__item-link {
+      max-width: 421px;
+      width: 100%;
+      text-align: center;
+    }
+    .journey {
+      color: var(--primary-primary-30, #81848d);
+      margin-bottom: 16px;
+    }
+    .trips__item-time-bus {
+      font-size: 18px;
+    }
+
+    .today__item-date {
+      font-size: 16px;
+    }
+    // селект в покупке билетов
+    .trip__buy {
+      flex-direction: column;
+      max-width: 485px;
+      padding: 24px 32px;
+      &-box {
+        margin: 0;
+        font-size: 20px;
+      }
+      &-time {
+        span::before,
+        span::after {
+          top: 38px;
+        }
+      }
+      &-btn {
+        width: 100%;
+        margin-top: 40px;
+      }
+      &-select {
+        max-width: 485px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 0;
+        border-radius: 8px;
+        border: 2px solid $primary;
+        background: $white;
+        margin-bottom: 8px;
+        @extend %roboto-500;
+        font-size: 16px;
+        line-height: 1.5;
+        &.hidden {
+          display: none;
+        }
+        svg {
+          margin-left: 16px;
+        }
+      }
+      .trip__buy-select {
+        border: none;
+        padding: 0;
+        color: $primary;
+        @extend %roboto-500;
+        font-size: 16px;
+        line-height: 1.5;
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+    .trips__item-time-bus {
+      margin-top: 16px;
+      .hidden {
+        display: none;
+      }
+    }
+  }
+  &__info {
+    max-width: 687px;
+    width: 100%;
+
+    margin-right: 32px;
+
+    .adult-ticket {
+      &__title {
+        margin-top: 32px;
+      }
+    }
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    input {
+      width: 300px;
+      margin-top: 8px;
+      padding: 12px 16px;
+
+      border-radius: 8px;
+      border: 1px solid var(--primary-primary-20, #aaadb2);
+      box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+    }
+  }
+  .baggage {
+    &__info {
+      margin-top: 16px;
+      margin-bottom: 24px;
+      .luggage {
+        color: $black;
+        font-size: 14px;
+        line-height: 1.42;
+        margin-top: 8px;
+        padding-left: 28px;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "";
+          width: 20px;
+          height: 20px;
+          left: 0;
+        }
+        span {
+          color: var(--primary-primary-40, #585d68);
+        }
+      }
+      .handluggage::before {
+        background-image: url(../images/hand-luggage.svg);
+      }
+      .touristluggage::before {
+        background-image: url(../images/tourist-luggage.svg);
+      }
+      .additionalbaggage {
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--primary-primary-20, #aaadb2);
+        margin-top: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        z-index: 2;
+        position: relative;
+
+        &__info {
+          color: $black;
+          @extend %roboto-500;
+          font-size: 16px;
+          line-height: 1.5;
+          position: relative;
+
+          span {
+            color: var(--primary-primary-40, #585d68);
+            @extend %roboto-400;
+            font-size: 14px;
+            line-height: 1.42;
+          }
+        }
+
+        &.active {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+
+          svg {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+  }
+  .additionalbaggage {
+    &__box {
+      position: relative;
+    }
+    &__dropdown {
+      position: absolute;
+      background-color: $white;
+      width: 621px;
+      .additionalbaggage {
+        cursor: auto;
+        margin-top: 0;
+        border-top: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        z-index: 2;
+
+        &__btns {
+          display: flex;
+          .summ {
+            margin-right: 40px;
+          }
+          .quantity {
+            margin: 0 12px;
+          }
+        }
+        &__btn {
+          background-color: $primary;
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          cursor: pointer;
+          position: relative;
+          transition: all 0.3s;
+          svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          &.dis {
+            background-color: #81848d;
+            cursor: auto;
+          }
+        }
+      }
+    }
+  }
+  .buyer-info {
+    margin-bottom: 168px;
+    &__text {
+      margin-top: 32px;
+      p {
+        margin-top: 24px;
+      }
+    }
+    &__btn {
+      border-radius: 8px;
+      border: 1px solid $accent;
+      background-color: $accent;
+
+      /* Shadow/xs */
+      box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+      color: $white;
+      padding: 12px 40px;
+      display: block;
+      margin: 0 auto;
+      margin-top: 40px;
+      &:hover {
+        background: var(--accent-accent-40, #f3c365);
+        box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+      }
+    }
+  }
+  .trip__buy-btn--deckstop {
+    display: block;
+  }
+  .trip__buy-btn--mobile {
+    display: none;
+  }
+}
+//section  buytuckets end
+.info__routs-title {
+  margin-top: 80px;
+}
+
+// blog page start
+.blog {
+  &__inner {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 160px;
+  }
+  &__items {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    grid-gap: 32px;
+    text-align: left;
+    margin-top: 48px;
+  }
+  &__item {
+    max-width: 378px;
+    position: relative;
+    img {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    &-title {
+      margin-top: 24px;
+      padding: 0 24px;
+    }
+    &-text {
+      margin-top: 16px;
+      padding: 0 24px 72px 24px;
+    }
+  }
+  a {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    transition: all 0.3s;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    &:hover {
+      background-color: rgba(253, 253, 253, 0.11);
+      box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+  }
+  &-article__item {
+    max-width: 790px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__item-text {
+    text-align: left;
+    padding: 0;
+    span {
+      display: block;
+      margin-top: 32px;
+      &:last-child {
+        color: var(--primary-primary-40, #585d68);
+      }
+    }
+  }
+  &-article__title {
+    margin-bottom: 40px;
+  }
+}
+// blog page end
+
+// contacts page start
+.contacts {
+  margin-bottom: 80px;
+  &__inner {
+    width: 100%;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    margin-top: 80px;
+    margin-bottom: 48px;
+  }
+  &__simtrans {
+    border-radius: 8px;
+    border: 2px solid $primary;
+    padding: 24px;
+    max-width: 685px;
+    margin-bottom: 24px;
+    &-title {
+      margin-bottom: 24px;
+    }
+    &-city {
+      span + span {
+        margin-left: 32px;
+      }
+    }
+    &-box {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 506px;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+  .contacts__simtrans-mail,
+  .contacts__simtrans-phone {
+    margin-top: 16px;
+    padding-left: 40px;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 24px;
+      height: 24px;
+      left: 0;
+    }
+  }
+  .contacts__simtrans-mail::before {
+    background-image: url(../images/mailprim.svg);
+  }
+  .contacts__simtrans-phone::before {
+    background-image: url(../images/phoneprim.png);
+  }
+
+  .contacts__simtrans-phone,
+  .contacts__simtrans-social {
+    margin-top: 16px;
+  }
+  .contacts__simtrans-social {
+    a + a {
+      margin-left: 16px;
+    }
+  }
+  .connect-us {
+    &__title {
+      margin-bottom: 24px;
+    }
+    background-color: $primary;
+    color: $white;
+    text-align: center;
+    float: right;
+    padding: 24px;
+    max-width: 481px;
+    width: 100%;
+    border-radius: 8px;
+    &__box {
+      text-align: left;
+    }
+    label {
+      margin-top: 16px;
+    }
+    textarea {
+      width: 100%;
+      resize: none;
+      min-height: 84px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--primary-primary-20, #aaadb2);
+      margin-top: 8px;
+      margin-bottom: 40px;
+    }
+    input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--primary-primary-20, #aaadb2);
+      margin-top: 8px;
+      margin-bottom: 16px;
+    }
+    &__btn {
+      width: 100%;
+      padding: 12px 40px;
+      border-radius: 8px;
+      color: $white;
+      background-color: $accent;
+      transition: all 0.3s;
+      &:hover {
+        background: var(--accent-accent-40, #f3c365);
+        box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+      }
+    }
+  }
+}
+// contacts page end
 //@media************************************************************
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   .container {
     padding: 0 40px;
   }
@@ -1132,7 +1595,7 @@
       background-color: $white;
       top: 0;
       right: 0;
-      z-index: 3;
+      z-index: 8;
       width: 100vh;
       height: 100vh;
       transition: all 0.5s;
@@ -1147,7 +1610,7 @@
       width: 32px;
       height: 32px;
       position: relative;
-      z-index: 4;
+      z-index: 10;
       // overflow: hidden;
       margin-left: 32px;
     }
@@ -1238,6 +1701,9 @@
     &__inner {
       margin-bottom: 120px;
     }
+    &__text {
+      max-width: 332px;
+    }
   }
   .advantages {
     &__title {
@@ -1288,6 +1754,18 @@
     .info__items {
       margin-bottom: 114px;
     }
+    &__item-btn {
+      &:hover {
+        border-radius: 8px;
+        padding: 16px;
+        background: var(--primary-primary-10, #d3d4d7);
+      }
+      &.active-btn:hover {
+        border-radius: 8px 8px 0px 0px;
+        background: var(--primary-primary-50, #2e3442);
+        color: $white;
+      }
+    }
   }
   .footer {
     &__inner {
@@ -1330,6 +1808,125 @@
     }
   }
   //  -*-*-*-*-*-*-*-*-*-*-*-*-*
+
+  .buytuckets {
+    position: relative; // +++
+    margin-top: 40px; // +++
+    .baggage,
+    .buyer-info,
+    .passenger-info {
+      padding: 24px 24px; // +++
+      margin-top: 32px; // +++
+    }
+    .trip {
+      float: none; // +++
+      .trip__buy {
+        &-select {
+          cursor: pointer;
+          &.hidden {
+            display: flex;
+            max-width: 100%;
+          }
+        }
+        .trip__buy-select {
+          &.hidden {
+            display: flex;
+          }
+        }
+      }
+
+      .trips__item-link {
+        max-width: 621px; // ++
+        width: 100%;
+      }
+      .journey {
+        margin: 0 auto; // +++
+      }
+
+      .trip__buy {
+        &-hidden {
+          display: none;
+        }
+        max-width: 100%; // +++
+        &-time {
+          span::before,
+          span::after {
+            top: 13px;
+          }
+        }
+      }
+    }
+
+    .buyer-info {
+      margin-bottom: 72px; // +++
+    }
+
+    .trip__buy-btn--deckstop {
+      display: none;
+    }
+    .trip__buy-btn--mobile {
+      display: block;
+      margin-bottom: 120px;
+      .trips__item-link {
+        min-width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  .overlay {
+    height: 378%;
+  }
+  // /*/*/*/*//-/*-/-*/-*/-/-*/-*/-*/-*/-*/-*/-*/-/-*/-*/-*/-*/-*/-/-/-/-*/-*/
+
+  .blog {
+    &__inner {
+      margin-bottom: 120px;
+    }
+    &__items {
+      grid-gap: 24px;
+      margin-top: 40px;
+    }
+    &__item {
+      max-width: 332px;
+      position: relative;
+      &-title {
+        margin-top: 24px;
+        padding: 0 24px;
+      }
+      &-text {
+        margin-top: 16px;
+        padding: 0 24px 48px 24px;
+      }
+    }
+
+    &-article__item {
+      max-width: 790px;
+    }
+    &__item-text {
+      padding: 0;
+    }
+  }
+
+  .contacts {
+    margin-bottom: 120px;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    &__title {
+      margin-top: 75px;
+      margin-bottom: 40px;
+    }
+    &__simtrans {
+      max-width: 688px;
+    }
+
+    .connect-us {
+      max-width: 688px;
+    }
+  }
 }
 @media (max-width: 650px) {
   .header__menu-mobile {
@@ -1348,19 +1945,153 @@
       }
     }
   }
+
+  .buytuckets {
+    .buytuckets__row {
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+    }
+    .trip {
+      .trip__buy {
+        flex-direction: row;
+      }
+    }
+  }
+  .blog {
+    &__inner {
+      margin-bottom: 80px;
+    }
+    &__items {
+      grid-gap: 0px;
+      margin-top: 32px;
+    }
+    &__item {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  }
+  .contacts {
+    text-align: center;
+
+    &__item {
+      display: flex;
+      justify-content: center;
+    }
+
+    &__simtrans {
+      &-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .connect-us {
+      &__title {
+        margin-bottom: 24px;
+      }
+      background-color: $primary;
+      color: $white;
+      text-align: center;
+      float: right;
+      padding: 24px;
+      width: 100%;
+      border-radius: 8px;
+      &__box {
+        text-align: left;
+      }
+      label {
+        margin-top: 16px;
+      }
+      textarea {
+        width: 100%;
+        resize: none;
+        min-height: 84px;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--primary-primary-20, #aaadb2);
+        margin-top: 8px;
+        margin-bottom: 40px;
+      }
+      input {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--primary-primary-20, #aaadb2);
+        margin-top: 8px;
+        margin-bottom: 16px;
+      }
+      &__btn {
+        width: 100%;
+        padding: 12px 40px;
+        border-radius: 8px;
+        color: $white;
+        background-color: $accent;
+        transition: all 0.3s;
+        &:hover {
+          background: var(--accent-accent-40, #f3c365);
+          box-shadow: 0px 1px 2px 0px rgba(198, 228, 246, 0.05);
+        }
+      }
+    }
+  }
 }
 @media (max-width: 600px) {
   .header__menu-mobile {
     width: 605px;
+  }
+  .about {
+    &__inner {
+      text-align: center;
+    }
+    &__box {
+      flex-direction: column-reverse;
+    }
+    picture {
+      width: 100%;
+    }
+    &__text {
+      margin: auto;
+      max-width: 100%;
+      text-align: left;
+    }
+  }
+  .checkbox__buytickets {
+    align-items: flex-start;
   }
 }
 @media (max-width: 500px) {
   .header__menu-mobile {
     width: 505px;
   }
+  .buytuckets {
+    .buytuckets__row {
+      text-align: left;
+    }
+  }
+  .blog {
+    &-article__item {
+      max-width: 790px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    &__item-text {
+      text-align: left;
+      padding: 0;
+      font-size: 14px;
+      span {
+        margin-top: 24px;
+      }
+    }
+    &-article__title {
+      font-size: 28px;
+      margin-bottom: 32px;
+    }
+  }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 462px) {
   .container {
     padding: 0 20px;
   }
@@ -1549,6 +2280,7 @@
     &__box {
       flex-direction: column-reverse;
       text-align: left;
+      margin: auto;
       img {
         max-width: 100%;
       }
@@ -1634,11 +2366,13 @@
     &__inner {
       text-align: center;
       padding: 48px 0;
+      flex-direction: column;
       .logo {
         margin: 0 auto;
       }
       .subscription {
         margin-top: 64px;
+        margin: 0 auto;
         &__input {
           border-radius: 8px;
           margin-bottom: 4px;
@@ -1683,25 +2417,65 @@
       }
     }
   }
+  .trip__buy {
+    max-width: 100%; // +++
+    &-time {
+      span::before,
+      span::after {
+        display: none;
+      }
+    }
+    .today-from {
+      margin-right: auto;
+    }
+  }
+  .buytuckets {
+    .trip {
+      .trips__item-time-bus {
+        margin-top: 8px;
+      }
+    }
+  }
 }
 @media (max-width: 440px) {
   .header__menu-mobile {
     width: 445px;
+  }
+  .buytuckets {
+    .trip {
+      .trip__buy {
+        padding: 24px 11px;
+      }
+    }
   }
 }
 @media (max-width: 420px) {
   .header__menu-mobile {
     width: 425px;
   }
+  .trips__item-box {
+    max-width: 290px;
+  }
 }
 @media (max-width: 380px) {
   .header__menu-mobile {
     width: 385px;
   }
+  .buytuckets__row {
+    input {
+      width: 260px;
+    }
+  }
 }
 @media (max-width: 340px) {
   .header__menu-mobile {
     width: 345px;
+  }
+  .trips__item-box {
+    max-width: 260px;
+  }
+  .trips__item-time {
+    padding: 0;
   }
 }
 // /***/

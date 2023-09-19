@@ -62,7 +62,7 @@ $(function () {
 
   const calendarPlaceholder = document.querySelector("#datepicker");
   const calendarMinorPlaceholder = document.querySelector("#datepicker-minor");
-
+  const language = document.querySelector(".sBtn-text ");
   let counterAdults = 1;
   let counterMinors = 0;
   /** Настройки каледаря начало */
@@ -226,7 +226,7 @@ $(function () {
     minDate: new Date(),
     buttons: ["today", "clear"],
     locale: lang,
-    multipleDatesSeparator: " - ",
+    multipleDatesSeparator: " | ",
     range: false,
   };
   const datepickerMinor = {
@@ -253,9 +253,24 @@ $(function () {
         if (bothSides.classList.contains("checked")) {
           optionCalendar.range = true;
           new AirDatepicker("#datepicker", optionCalendar);
+          if (language.classList.contains("ukr")) {
+            calendarPlaceholder.placeholder = "дд.мм.рррр | дд.мм.рррр";
+          } else if (language.classList.contains("ru")) {
+            calendarPlaceholder.placeholder = "дд.мм.гггг | дд.мм.гггг";
+          } else if (language.classList.contains("eng")) {
+            calendarPlaceholder.placeholder = "dd.mm.yyyy | dd.mm.yyyy";
+          }
+          calendarPlaceholder.value = "";
         } else {
           optionCalendar.range = false;
-          new AirDatepicker("#datepicker", optionCalendar);
+          if (language.classList.contains("ukr")) {
+            calendarPlaceholder.placeholder = "дд.мм.рррр";
+          } else if (language.classList.contains("ru")) {
+            calendarPlaceholder.placeholder = "дд.мм.гггг";
+          } else if (language.classList.contains("eng")) {
+            calendarPlaceholder.placeholder = "dd.mm.yyyy";
+          }
+          calendarPlaceholder.value = "";
         }
       });
     });
@@ -360,10 +375,15 @@ $(function () {
         optionCalendar.navTitles = ukrNav;
         calendarPlaceholder.placeholder = "дд.мм.рррр";
         optionCalendar.locale = lang;
+        language.classList.remove("ru");
+        language.classList.remove("eng");
+        language.classList.add("ukr");
 
         datepickerMinor.navTitles = ukrNav;
         datepickerMinor.locale = lang;
         calendarMinorPlaceholder.placeholder = "дд.мм.рррр";
+        calendarPlaceholder.value = "";
+        calendarMinorPlaceholder.value = "";
 
         new AirDatepicker("#datepicker", optionCalendar);
         new AirDatepicker("#datepicker-minor", datepickerMinor);
@@ -373,9 +393,15 @@ $(function () {
         optionCalendar.navTitles = ruNav;
         calendarPlaceholder.placeholder = "дд.мм.гггг";
 
+        language.classList.remove("eng");
+        language.classList.remove("ukr");
+        language.classList.add("ru");
+
         datepickerMinor.locale = lang;
         datepickerMinor.navTitles = ruNav;
         calendarMinorPlaceholder.placeholder = "дд.мм.гггг";
+        calendarPlaceholder.value = "";
+        calendarMinorPlaceholder.value = "";
 
         new AirDatepicker("#datepicker-minor", datepickerMinor);
         new AirDatepicker("#datepicker", optionCalendar);
@@ -385,9 +411,15 @@ $(function () {
         optionCalendar.navTitles = engNav;
         calendarPlaceholder.placeholder = "dd.mm.yyyy";
 
+        language.classList.remove("ukr");
+        language.classList.remove("ru");
+        language.classList.add("eng");
+
         datepickerMinor.locale = lang;
         datepickerMinor.navTitles = engNav;
         calendarMinorPlaceholder.placeholder = "dd.mm.yyyy";
+        calendarPlaceholder.value = "";
+        calendarMinorPlaceholder.value = "";
 
         new AirDatepicker("#datepicker-minor", datepickerMinor);
         new AirDatepicker("#datepicker", optionCalendar);
@@ -668,4 +700,36 @@ $(function () {
     newReviersModalWindow.classList.add("hidden");
     newReviewsSuccessWindow.classList.remove("hidden");
   });
+
+  // страница личного кабинета
+
+  const widthInput = document.querySelector(".testinput").offsetWidth;
+  document.querySelector(".photo-label").style.maxWidth = widthInput + "px";
+
+  let pattern = /((?:.(?!\(\d+\)))+.)(?:\(\d+\))?\..+/;
+  document.getElementById("photo-user").onchange = function () {
+    let photoName = document.querySelector(".photoname");
+    photoName.classList.add("photo-add");
+    photoName.textContent = this.files[0].name.match(pattern)[1];
+  };
+
+  const personalInfoBtnOn = document.querySelector(".personal__info-btn-on");
+  const personalInfoBtnOff = document.querySelector(".personal__info-btn-off");
+  const personalChangeBlock = document.querySelector(".personal__change");
+
+  const showChangeBlock = function () {
+    personalInfoBtnOn.classList.add("hidden");
+    personalInfoBtnOff.classList.remove("hidden");
+    personalChangeBlock.classList.remove("hidden");
+    const widthInput = document.querySelector(".testinput").offsetWidth;
+    document.querySelector(".photo-label").style.maxWidth = widthInput + "px";
+  };
+  const closeChangeBlock = function () {
+    personalInfoBtnOn.classList.remove("hidden");
+    personalInfoBtnOff.classList.add("hidden");
+    personalChangeBlock.classList.add("hidden");
+  };
+
+  personalInfoBtnOn.addEventListener("click", showChangeBlock);
+  personalInfoBtnOff.addEventListener("click", closeChangeBlock);
 });

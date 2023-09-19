@@ -482,7 +482,7 @@
                     <label class="order__form select-to">
                       Куди
                       <select
-                        name="from"
+                        name="to"
                         class="multi-select top__order to"
                         aria-label="Choise sity"
                       >
@@ -503,13 +503,14 @@
                   </div>
 
                   <div class="order__form-box--bottom">
-                    <label class="order__form" for="">
+                    <label class="order__form datapicker-top" for="">
                       Дата відправлення
                       <input
                         id="datepicker"
                         placeholder="дд.мм.рррр"
                         class="form-control-datepicker"
                         autocomplete="off"
+                        name="date"
                       />
                     </label>
                     <div class="passengers">
@@ -920,6 +921,10 @@
         <div class="new-reviews__close"></div>
         <div class="new-reviews__success-close"></div>
         <div class="new-reviews__succes-btn"></div>
+        <div class="photo hidden">
+          <span class="photoname"> Завантажте файл</span>
+          <input hidden name="photo-user" id="photo-user" type="file" />
+        </div>
       </div>
 
       <div class="overlay"></div>

@@ -34,18 +34,16 @@ $(function () {
   const selectnBtn = optionMenu.querySelector(".select-btn");
   const options = optionMenu.querySelectorAll(".option");
   const sBtn_text = optionMenu.querySelector(".sBtn-text");
+
   const overlay = document.querySelector(".overlay");
 
-  const pass = document.querySelector(".pass");
+  const pass = document.querySelector(".passengers__inner");
   const passDrop = document.querySelector(".passengers__dropdown");
-
   const minorsBlock = document.querySelector(".minors");
-
   const adultMinus = document.querySelector(".adults-minus");
   const adultPlus = document.querySelector(".adults-plus");
   const minorMinus = document.querySelector(".minors-minus");
   const minorPlus = document.querySelector(".minors-plus");
-
   const textAdults = document.querySelector(".text-adults");
   const textMinors = document.querySelector(".text-minors");
   const passAdults = document.querySelector(".pass-adults");
@@ -314,6 +312,7 @@ $(function () {
       },
     },
   });
+
   const dropActive = function () {
     passDrop.classList.toggle("active");
     overlay.classList.toggle("active");
